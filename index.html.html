@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Countdown</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: url("Imagem.jpg") no-repeat center/cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: white;
+      text-align: center;
+    }
+    .container {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 20px 40px;
+      border-radius: 20px;
+    }
+    h1 {
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+    }
+    .time {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 id="countdown"></h1>
+  </div>
+
+  <script>
+    const targetDate = new Date("2025-08-29T16:30:00-03:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance <= 0) {
+        document.getElementById("countdown").innerText = 
+          "Chegou a hora do braçudo! 🎉🔥";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("countdown").innerText =
+        `${days}d ${hours}h ${minutes}m ${seconds}s pro braçudo me comer de todos os jeitos. Hai! ⛓️🥨❤️`;
+    }
+
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
